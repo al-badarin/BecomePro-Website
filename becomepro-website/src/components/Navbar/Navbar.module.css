@@ -5,30 +5,36 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #003459; /* Navy blue background */
+  background-color: #003459;
   color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .logoText {
+  display: flex;
+  align-items: center;
   font-size: 1.5rem;
   font-weight: bold;
-  color: #fff; /* Gold color for logo */
+  color: #fff;
 }
 
 .logoImg {
   width: 60px;
   height: 60px;
-  margin: 0 20px;
+  margin-right: 10px;
   transition: transform 0.3s ease;
 }
 
 .logoImg:hover {
-  transform: rotate(360deg); /* Cool rotate effect on hover */
+  transform: rotate(360deg);
 }
 
 .navLinks {
   display: flex;
   list-style-type: none;
+  transition: max-height 0.3s ease;
 }
 
 .navLinks li {
@@ -38,7 +44,7 @@
 
 .navLinks li span,
 .navLinks li a {
-  color: #fff; /* White text */
+  color: #fff;
   font-size: 1rem;
   text-decoration: none;
   cursor: pointer;
@@ -46,20 +52,20 @@
 }
 
 .navLinks li span:hover,
-.navLinks li.home{
-  color: #f39c12; /* Gold color on hover */
+.navLinks li.home {
+  color: #f39c12;
 }
 
 .dropdown {
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #003459; /* Navy blue for dropdown */
+  background-color: #003459;
   border-radius: 5px;
   list-style: none;
   padding: 0.5rem 0;
   min-width: 200px;
-  display: flex;
+  display: none;
   flex-direction: column;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -69,11 +75,78 @@
 }
 
 .dropdown li a {
-  color: #fff; /* White text for dropdown items */
+  color: #fff;
   text-decoration: none;
 }
 
 .dropdown li:hover {
-  background-color: #f39c12; /* Gold background on hover */
-  color: #003459; /* Navy text on hover */
+  background-color: #f39c12;
+  color: #003459;
+}
+
+.navLinks li:hover .dropdown {
+  display: flex;
+}
+
+.toggleButton {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .toggleButton {
+    display: block;
+  }
+
+  .navLinks {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #003459;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+  }
+
+  .navLinks.active {
+    max-height: 300px; /* Adjust based on content */
+  }
+
+  .navLinks ul {
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+  }
+
+  .navLinks li {
+    margin: 10px 0;
+  }
+
+  .dropdown {
+    position: relative;
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .navLinks li:hover .dropdown {
+    display: none;
+  }
+
+  .navLinks li span {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .dropdown li {
+    text-align: center;
+  }
 }
