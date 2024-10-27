@@ -1,0 +1,79 @@
+/* src/components/Navbar/Navbar.module.css */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #003459; /* Navy blue background */
+  color: #fff;
+}
+
+.logoText {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff; /* Gold color for logo */
+}
+
+.logoImg {
+  width: 60px;
+  height: 60px;
+  margin: 0 20px;
+  transition: transform 0.3s ease;
+}
+
+.logoImg:hover {
+  transform: rotate(360deg); /* Cool rotate effect on hover */
+}
+
+.navLinks {
+  display: flex;
+  list-style-type: none;
+}
+
+.navLinks li {
+  position: relative;
+  margin: 0 1rem;
+}
+
+.navLinks li span,
+.navLinks li a {
+  color: #fff; /* White text */
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.navLinks li span:hover,
+.navLinks li.home{
+  color: #f39c12; /* Gold color on hover */
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #003459; /* Navy blue for dropdown */
+  border-radius: 5px;
+  list-style: none;
+  padding: 0.5rem 0;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown li {
+  padding: 0.5rem 1rem;
+}
+
+.dropdown li a {
+  color: #fff; /* White text for dropdown items */
+  text-decoration: none;
+}
+
+.dropdown li:hover {
+  background-color: #f39c12; /* Gold background on hover */
+  color: #003459; /* Navy text on hover */
+}
