@@ -1,0 +1,181 @@
+.pricing {
+  padding: 60px 20px;
+  background-color: #003459; /* Navy blue background */
+  text-align: center;
+  color: #ffffff; /* White text for contrast */
+}
+
+.sectionTitle {
+  font-size: 2.8rem;
+  margin-bottom: 40px;
+  color: #f39c12; /* Gold color */
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 4px;
+  background-color: #f39c12; /* Gold underline */
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+}
+
+/* Promo Banner Styles */
+.promoContainer {
+  margin-bottom: 40px;
+}
+
+.promoBanner {
+  background-color: #f39c12; /* Gold background for the promo */
+  color: #003459; /* Navy blue text */
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  animation: pulse 2s infinite; /* Subtle animation to draw attention */
+}
+
+.promoText {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.highlight {
+  color: #ffffff; /* White text for emphasis */
+  background-color: #003459; /* Navy background for emphasis */
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+/* Keyframes for pulse animation */
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.pricingContainer {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.pricingOption {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-basis: 30%;
+  width: 350px;
+  padding: 30px;
+  background-color: #ffffff; /* White background */
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Stronger box shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  height: auto;
+}
+
+.pricingOption:hover {
+  transform: translateY(-10px) rotate(-1deg); /* Slight rotation on hover */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.pricingOption::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 100px;
+  height: 100px;
+  background-color: rgba(
+    3,
+    52,
+    89,
+    0.15
+  ); /* Semi-transparent navy blue circle */
+  border-radius: 50%;
+  transition: top 0.3s ease, right 0.3s ease;
+}
+
+.pricingOption:hover::before {
+  top: -70px;
+  right: -70px;
+}
+
+.pricingTitle {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #003459; /* Navy blue for titles */
+  font-weight: bold;
+}
+
+.price {
+  font-size: 2.2rem;
+  color: #f39c12; /* Gold color for price */
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-wrap: nowrap;
+}
+
+.oldPrice {
+  text-decoration: line-through;
+  color: #888888;
+  font-size: 1.6rem;
+  margin-right: 10px;
+}
+
+.pricingDescription {
+  font-size: 1.1rem;
+  color: #666666;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .pricingContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pricingOption {
+    flex-basis: 80%;
+    max-width: none;
+    margin-bottom: 30px;
+    height: auto; /* Allow auto height for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 2.2rem;
+  }
+
+  .pricingTitle {
+    font-size: 1.5rem;
+  }
+
+  .price {
+    font-size: 2rem;
+  }
+
+  .pricingDescription {
+    font-size: 1rem;
+  }
+
+  .promoText {
+    font-size: 1.3rem;
+  }
+}
