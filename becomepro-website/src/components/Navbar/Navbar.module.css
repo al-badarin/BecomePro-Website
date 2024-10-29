@@ -52,8 +52,13 @@
 }
 
 .navLinks li span:hover,
-.navLinks li.home {
-  color: #f39c12;
+.navLinks li.home a:hover {
+  color: #f39c12; /* Gold color on hover */
+}
+
+/* Dropdown styling */
+.dropdownContainer {
+  position: relative;
 }
 
 .dropdown {
@@ -68,6 +73,11 @@
   display: none;
   flex-direction: column;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.dropdownContainer:hover .dropdown {
+  display: flex;
 }
 
 .dropdown li {
@@ -77,17 +87,19 @@
 .dropdown li a {
   color: #fff;
   text-decoration: none;
+  display: block;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .dropdown li:hover {
-  background-color: #f39c12;
-  color: #003459;
+  background-color: #f39c12; /* Gold background on hover */
 }
 
-.navLinks li:hover .dropdown {
-  display: flex;
+.dropdown li:hover a {
+  color: #003459; /* Navy text on hover */
 }
 
+/* Mobile Menu Toggle */
 .toggleButton {
   display: none;
   font-size: 1.8rem;
@@ -113,6 +125,7 @@
     align-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px 0;
+    transition: max-height 0.3s ease;
   }
 
   .navLinks.active {
@@ -136,8 +149,12 @@
     width: 100%;
   }
 
-  .navLinks li:hover .dropdown {
-    display: none;
+  .dropdownContainer:hover .dropdown {
+    display: none; /* Disable hover dropdown for mobile */
+  }
+
+  .dropdownContainer.active .dropdown {
+    display: flex; /* Show dropdown when clicked on mobile */
   }
 
   .navLinks li span {
