@@ -1,6 +1,7 @@
 // src/components/Navbar/Navbar.jsx
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
+import { Link as ScrollLink } from 'react-scroll';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import styles from './Navbar.module.css';
 import logo from '/assets/logo.png';
@@ -9,23 +10,40 @@ const Navbar = () => {
   const [isGripSocksOpen, setGripSocksOpen] = useState(false);
   const [isTrainingOpen, setTrainingOpen] = useState(false);
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => setMenuOpen(!isMenuOpen);
+
+  // Function to handle navigation to a section within /grip-socks
+  const handleGripSocksNavigation = (section) => {
+    if (location.pathname !== '/grip-socks') {
+      // If not already on /grip-socks, navigate to it first
+      window.location.href = `/grip-socks#${section}`;
+    } else {
+      // Scroll to the section if already on /grip-socks
+      ScrollLink.scrollTo(section, {
+        smooth: true,
+        duration: 500,
+        offset: -70,
+      });
+    }
+    setMenuOpen(false); // Close the menu
+  };
 
   return (
     <nav className={styles.navbar}>
       <div className={styles.logoText}>
         <img src={logo} alt="BecomePro Logo" className={styles.logoImg} />
-        <Link to="/">BecomePro</Link>
+        <RouterLink to="/">BecomePro</RouterLink>
       </div>
       <div className={styles.toggleButton} onClick={toggleMenu}>
         {isMenuOpen ? <FaTimes /> : <FaBars />}
       </div>
       <ul className={`${styles.navLinks} ${isMenuOpen ? styles.active : ''}`}>
         <li className={styles.home}>
-          <Link to="/" onClick={() => setMenuOpen(false)}>
+          <RouterLink to="/" onClick={() => setMenuOpen(false)}>
             НАЧАЛО
-          </Link>
+          </RouterLink>
         </li>
 
         {/* GRIP SOCKS Menu */}
@@ -34,39 +52,42 @@ const Navbar = () => {
           onMouseLeave={() => setGripSocksOpen(false)}
           className={styles.dropdownContainer}
         >
-          <Link to="/grip-socks" onClick={() => setMenuOpen(false)}>
+          <RouterLink to="/grip-socks" onClick={() => setMenuOpen(false)}>
             GRIP SOCKS
-          </Link>
+          </RouterLink>
           {isGripSocksOpen && (
             <ul className={styles.dropdown}>
               <li>
-                <Link
+                <RouterLink
                   to="/grip-socks/features"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => handleGripSocksNavigation('features')}
                 >
                   Характеристики
-                </Link>
+                </RouterLink>
               </li>
               <li>
-                <Link
+                <RouterLink
                   to="/grip-socks/pricing"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => handleGripSocksNavigation('pricing')}
                 >
                   Цени
-                </Link>
+                </RouterLink>
               </li>
               <li>
-                <Link to="/grip-socks/order" onClick={() => setMenuOpen(false)}>
+                <RouterLink
+                  to="/grip-socks/order"
+                  onClick={() => handleGripSocksNavigation('order')}
+                >
                   Поръчай сега
-                </Link>
+                </RouterLink>
               </li>
               <li>
-                <Link
+                <RouterLink
                   to="/grip-socks/reviews"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => handleGripSocksNavigation('reviews')}
                 >
                   Отзиви
-                </Link>
+                </RouterLink>
               </li>
             </ul>
           )}
@@ -82,67 +103,76 @@ const Navbar = () => {
           {isTrainingOpen && (
             <ul className={styles.dropdown}>
               <li>
-                <Link to="/training/fitness" onClick={() => setMenuOpen(false)}>
+                <RouterLink
+                  to="/training/fitness"
+                  onClick={() => setMenuOpen(false)}
+                >
                   Фитнес режими
-                </Link>
+                </RouterLink>
               </li>
               <li>
-                <Link
+                <RouterLink
                   to="/training/technical"
                   onClick={() => setMenuOpen(false)}
                 >
                   Технически програми
-                </Link>
+                </RouterLink>
               </li>
               <li>
-                <Link to="/training/mental" onClick={() => setMenuOpen(false)}>
+                <RouterLink
+                  to="/training/mental"
+                  onClick={() => setMenuOpen(false)}
+                >
                   Ментална подготовка
-                </Link>
+                </RouterLink>
               </li>
               <li>
-                <Link
+                <RouterLink
                   to="/training/nutrition"
                   onClick={() => setMenuOpen(false)}
                 >
                   Хранене и хранителни режими
-                </Link>
+                </RouterLink>
               </li>
               <li>
-                <Link to="/training/speed" onClick={() => setMenuOpen(false)}>
+                <RouterLink
+                  to="/training/speed"
+                  onClick={() => setMenuOpen(false)}
+                >
                   Скорост и експлозивност
-                </Link>
+                </RouterLink>
               </li>
               <li>
-                <Link
+                <RouterLink
                   to="/training/recovery"
                   onClick={() => setMenuOpen(false)}
                 >
                   Възстановяване
-                </Link>
+                </RouterLink>
               </li>
               <li>
-                <Link
+                <RouterLink
                   to="/training/mobility"
                   onClick={() => setMenuOpen(false)}
                 >
                   Мобилност и Стречинг
-                </Link>
+                </RouterLink>
               </li>
               <li>
-                <Link
+                <RouterLink
                   to="/training/endurance"
                   onClick={() => setMenuOpen(false)}
                 >
                   Издръжливост
-                </Link>
+                </RouterLink>
               </li>
               <li>
-                <Link
+                <RouterLink
                   to="/training/video-analysis"
                   onClick={() => setMenuOpen(false)}
                 >
                   Видео Анализи
-                </Link>
+                </RouterLink>
               </li>
             </ul>
           )}

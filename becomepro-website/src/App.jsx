@@ -12,6 +12,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/grip-socks" element={<GripSocksPage />} />
+        <Route path="/grip-socks/features" element={<GripSocksPage section="features" />} />
+        <Route path="/grip-socks/pricing" element={<GripSocksPage section="pricing" />} />
+        <Route path="/grip-socks/order" element={<GripSocksPage section="order" />} />
+        <Route path="/grip-socks/reviews" element={<GripSocksPage section="reviews" />} />
       </Routes>
     </Router>
   );
